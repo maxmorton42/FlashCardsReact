@@ -1,26 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Jokes from './Jokes';
+import JokeForm from "./JokeForm";
+import { Container, Header, } from "semantic-ui-react"; 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
+
+  state = {
+    jokes: [
+      { id: 1, front: "A", back: "B", boolean: "true", },
+      { id: 1, front: "A", back: "B", boolean: "true", },
+      { id: 1, front: "A", back: "B", boolean: "true", },
+    ],
+    
+  };
+
+  getId = () => {
+    return Math.floor((1 + Math.random()) * 10000);
+  };
+  
+  addJoke = ({ front, back, }) => {
+    let joke = { id: this.getId() , front, back, boolean: "true", }
+    this.setState({ jokes: [ ...this.state.jokes, joke], });
+  };
+
+  flipDat = () => this.setState({ boolean: !this.state.showForm,});
+
+
+  render() {
+    return (
+      <Container style={{ paddingTop: "25px" }}>
+        <Header>Flash That Card Girl</Header>
+        <br />
+        <JokeForm add={ this.addJoke}/>
+        <br />
+        <Jokes jokes={this.state.jokes} flipDat={this.flipDat} />
+      </Container>
+      
+    );
+  };
+};
+
 
 export default App;
