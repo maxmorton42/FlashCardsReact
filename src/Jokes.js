@@ -2,11 +2,11 @@ import React from "react";
 import { Table, Button,  } from "semantic-ui-react";
 import Joke from "./Joke"
 
-const Jokes = ({ jokes, flipDat }) => {
+const Jokes = ({ jokes, }) => {
   const renderJokes = () => {
     return (
       jokes.map( joke => (
-        <Joke key={joke.id} {...joke} flipDat={flipDat}/>
+        <Joke key={joke.id} {...joke} />
       ))
     )
   }

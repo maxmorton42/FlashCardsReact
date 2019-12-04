@@ -19,7 +19,7 @@ class App extends React.Component {
   };
   
   addJoke = ({ front, back, }) => {
-    let joke = { id: this.getId() , front, back, boolean: true, }
+    let joke = { id: this.getId(), front, back, boolean: true, }
     this.setState({ jokes: [ ...this.state.jokes, joke], });
   };
 
@@ -32,7 +32,7 @@ class App extends React.Component {
         <br />
         <JokeForm add={ this.addJoke}/>
         <br />
-        <Jokes jokes={this.state.jokes} flipDat={this.flipDat} />
+        <Jokes jokes={this.state.jokes} />
       </Container>
       
     );
