@@ -1,20 +1,27 @@
 import React from "react";
-import Jokes from "./Jokes"
 import {Button, Table, } from "semantic-ui-react";
 
 
-const Joke = ({front, back, flipDat}) => (
+class Joke extends React.Component {
+state = {show: false}
 
+toggleShow = () => {
+  this.setState({show: !this.state.show})
+}
+
+render() {
+return (
     <Table.Row>
-      <Table.Cell>{front}</Table.Cell>
-      <Table.Cell>{back}</Table.Cell>
+      <Table.Cell>{this.props.front}</Table.Cell>
       <Table.Cell>
-        <Button color="green" onClick={() => flipDat()}>
+        <Button color="green" onClick={() => this.toggleShow()}>
           FLIP
         </Button>
       </Table.Cell>
+      <Table.Cell>{this.state.show ?  ( this.props.back ) : null }</Table.Cell>
     </Table.Row>
-
-);
+)
+}
+}
 
 export default Joke;
