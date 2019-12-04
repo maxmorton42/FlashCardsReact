@@ -8,7 +8,7 @@ class App extends React.Component {
   state = {
     jokes: [
       { id: 1, front: "Why does the little mermaid wear sea-shells?", back: "Because she couldn't fit D shells",  },
-      { id: 2, front: "Whats the difference between Adam and a bucket of poop?", back: "The bucket",  },
+      { id: 2, front: "Whats the difference between windows OS and a bucket of poop?", back: "The bucket",  },
       { id: 3, front: "What did the lttle mermaid wear to math class?", back: "An algebra",  },
     ],
     
