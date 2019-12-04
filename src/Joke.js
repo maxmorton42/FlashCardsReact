@@ -2,12 +2,18 @@ import React from "react";
 import {Button, Table, } from "semantic-ui-react";
 
 
-class Joke extends React.Component {
+class Joke extends React.Component { 
 state = {show: false}
 
 toggleShow = () => {
   this.setState({show: !this.state.show})
 }
+
+// toggleRemove = () => {
+//   this.setState({show: !this.state.show})
+// }
+
+
 
 render() {
 return (
@@ -19,6 +25,9 @@ return (
         </Button>
       </Table.Cell>
       <Table.Cell>{this.state.show ?  ( this.props.back ) : null }</Table.Cell>
+      <Table.Cell>
+        <Button color="red" onClick={() => this.props.remove(this.props.id)}>Delete </Button>
+        </Table.Cell>
     </Table.Row>
 )
 }

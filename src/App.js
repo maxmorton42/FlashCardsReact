@@ -23,6 +23,14 @@ class App extends React.Component {
     this.setState({ jokes: [ ...this.state.jokes, joke], });
   };
 
+  removeJoke = (id) => {
+    const jokes = this.state.jokes.filter( joke => {
+      if (joke.id !== id)
+      return joke;
+
+    });
+    this.setState({ jokes, });
+  };
   // flipDat = (id) => this.setState({ boolean: !this.state.boolean,});
 
   render() {
@@ -32,12 +40,11 @@ class App extends React.Component {
         <br />
         <JokeForm add={ this.addJoke}/>
         <br />
-        <Jokes jokes={this.state.jokes} />
+        <Jokes jokes={this.state.jokes} remove={this.removeJoke} />
       </Container>
       
     );
   };
 };
-
 
 export default App;
