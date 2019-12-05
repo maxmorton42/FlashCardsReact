@@ -2,12 +2,26 @@ import React from "react";
 import {Form,} from "semantic-ui-react";
 
 class JokeForm extends React.Component {
-  state = {front: "", back: "", };
+  state = {front: "", back: "", editing: true, };
+  
+    componentDidMount() {
+      if (this.props.id)
+        this.setState({ front: this.props.front,  back: this.props.back, });
+    };
+
+
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.add(this.state)
-    this.setState({ front: "", back: "",})
+    if (this.props.id)
+    this.props.editJoke({ id: this.props.id, front: this.state.front, back: this.state.back});
+    else
+    
+      this.props.add(this.state);
+
+      this.setState({ front: "", back: "", });
+    // this.props.add(this.state)
+    // this.setState({ front: "", back: "",})
   };
 
   handleChange = (e) => {
@@ -15,12 +29,12 @@ class JokeForm extends React.Component {
   };
 
 
-  
+
     render() {
       return (
         <Form onSubmit={this.handleSubmit}>
-        <Form.Group widths="equal">
-            <Form.Input
+        <Form.Group widths ="equal">
+            <Form.TextArea
             fluid
             required
             label="front"
@@ -29,7 +43,8 @@ class JokeForm extends React.Component {
             value={this.state.front}
             onChange={this.handleChange}
         />
-        <Form.Input
+   <br />
+        <Form.TextArea
             fluid
             required
             label="back"
